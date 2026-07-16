@@ -10,3 +10,10 @@ export async function getHistoricalPrices(startDate, endDate) {
   const response = await axios.get(`${API_BASE}/historical`, { params });
   return response.data.data; // array of {date, price}
 }
+export async function getEvents(category = null) {
+  const params = {};
+  if (category) params.category = category;
+
+  const response = await axios.get(`${API_BASE}/events`, { params });
+  return response.data.data; // array of {date, event, category, expected_direction}
+}
